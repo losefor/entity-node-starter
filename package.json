@@ -1,0 +1,32 @@
+{
+  "name": "enodes",
+  "version": "1.0.0",
+  "description": "The ultimate entity node starter",
+  "dependencies": {
+    "@prisma/client": "^3.0.1",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^16.7.13",
+    "@types/passport": "^1.0.7",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0"
+  },
+  "keywords": [
+    "entity",
+    "node",
+    "typescript"
+  ],
+  "repository": "https://github.com/losefor/enodes",
+  "main": "index.js",
+  "license": "MIT"
+}
