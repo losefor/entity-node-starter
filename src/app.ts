@@ -19,8 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 // Logging
 app.use(morgan('dev'));
 
-// Authentication
+// Authentication with passport
 app.use(passport.initialize());
+import './auth/strategies/jwt.strategy';
+import './auth/strategies/local.strategy';
 
 //  TODO : Manage the routers
 //  TODO : Manage the error handling
