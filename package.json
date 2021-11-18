@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The ultimate entity node starter",
   "scripts": {
-    "lint": "lint .",
+    "lint": "eslint .",
     "start:dev": "nodemon src/server.ts",
     "migrate:dev": "prisma migrate dev --schema ./src/prisma/schema.prisma",
     "migrate:dev:create": "prisma migrate dev --create-only --schema ./src/prisma/schema.prisma",

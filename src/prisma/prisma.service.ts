@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 // Prisma client
 export const prisma = new PrismaClient({
-    errorFormat: "pretty",
+  errorFormat: 'pretty',
 });
-
-

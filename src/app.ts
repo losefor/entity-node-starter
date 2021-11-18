@@ -1,8 +1,8 @@
-import express from "express";
-import compression from "compression";
-import helmet from "helmet";
-import morgan from "morgan";
-import passport from 'passport'
+import express from 'express';
+import compression from 'compression';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import passport from 'passport';
 // Initialize the express app
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Logging
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 
 // Authentication
 app.use(passport.initialize());
