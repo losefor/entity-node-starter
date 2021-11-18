@@ -15,7 +15,7 @@ export const findMany = async (args : Prisma.UserFindManyArgs)=>{
 // findUniq 
 export const findUnique = async (args : Prisma.UserFindUniqueArgs)=>{
     const user = await prisma.user.findUnique(args)
-    const reshapedUser =  reshape([user as User])
+    const [reshapedUser] =  reshape([user as User])
     return reshapedUser
 }
 
@@ -24,3 +24,8 @@ export const findUniqueUnsafe = async (args : Prisma.UserFindUniqueArgs)=>{
     return users
 }
 
+export const create = async (args : Prisma.UserCreateArgs)=>{
+    const user  = await prisma.user.create(args)
+    const [reshapedUser] =  reshape([user])
+    return reshapedUser
+}
