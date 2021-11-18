@@ -1,5 +1,5 @@
 Arguments: 
-  /opt/homebrew/Cellar/node/16.8.0/bin/node /opt/homebrew/bin/yarn add express-async-errorstypescript -D
+  /opt/homebrew/Cellar/node/16.8.0/bin/node /opt/homebrew/bin/yarn migrate:dev
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/apple/flutter/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/opt/homebrew/sbin
@@ -14,17 +14,12 @@ Platform:
   darwin arm64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/express-async-errorstypescript: Not found
-      at Request.params.callback [as _callback] (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:66992:18)
-      at Request.self.callback (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:140763:22)
-      at Request.emit (node:events:394:28)
-      at Request.<anonymous> (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:141735:10)
-      at Request.emit (node:events:394:28)
-      at IncomingMessage.<anonymous> (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:141657:12)
-      at Object.onceWrapper (node:events:513:28)
-      at IncomingMessage.emit (node:events:406:35)
-      at endReadableNT (node:internal/streams/readable:1343:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  SyntaxError: /Users/apple/Documents/GitHub/entity node starter /package.json: Unexpected token } in JSON at position 956
+      at JSON.parse (<anonymous>)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -33,11 +28,21 @@ npm manifest:
     "description": "The ultimate entity node starter",
     "scripts": {
       "lint": "lint .",
-      "start:dev": "nodemon src/server.ts"
+      "start:dev": "nodemon src/server.ts",
+      "migrate:dev": "prisma migrate dev --schema ./src/prisma/schema.prisma",
+      "migrate:dev:create": "prisma migrate dev --create-only --schema ./src/prisma/schema.prisma",
+      "migrate:reset": "prisma migrate reset  --schema ./src/prisma/schema.prisma",
+      "migrate:deploy": "npx prisma migrate deploy  --schema ./src/prisma/schema.prisma",
+      "migrate:status": "npx prisma migrate status --schema ./src/prisma/schema.prisma",
+      "migrate:resolve": "npx prisma migrate resolve --schema ./src/prisma/schema.prisma",
+      "prisma:studio": "npx prisma studio --schema ./src/prisma/schema.prisma",
+      "prisma:generate": "npx prisma generate --schema ./src/prisma/schema.prisma",
+      "prisma:generate:watch": "npx prisma generate --watch  --schema ./src/prisma/schema.prisma",
     },
     "dependencies": {
       "@prisma/client": "^3.0.1",
       "express": "^4.17.1",
+      "express-async-errors": "^3.1.1",
       "helmet": "^4.6.0",
       "morgan": "^1.10.0",
       "passport": "^0.4.1",
@@ -998,6 +1003,11 @@ Lockfile:
     version "1.8.1"
     resolved "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz"
     integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
+  
+  express-async-errors@^3.1.1:
+    version "3.1.1"
+    resolved "https://registry.yarnpkg.com/express-async-errors/-/express-async-errors-3.1.1.tgz#6053236d61d21ddef4892d6bd1d736889fc9da41"
+    integrity sha512-h6aK1da4tpqWSbyCa3FxB/V6Ehd4EEB15zyQq9qe75OZBp0krinNKuH4rAY+S/U/2I36vdLAUFSjQJ+TFmODng==
   
   express@^4.17.1:
     version "4.17.1"

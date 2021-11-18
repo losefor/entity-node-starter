@@ -4,7 +4,16 @@
   "description": "The ultimate entity node starter",
   "scripts": {
     "lint": "lint .",
-    "start:dev": "nodemon src/server.ts"
+    "start:dev": "nodemon src/server.ts",
+    "migrate:dev": "prisma migrate dev --schema ./src/prisma/schema.prisma",
+    "migrate:dev:create": "prisma migrate dev --create-only --schema ./src/prisma/schema.prisma",
+    "migrate:reset": "prisma migrate reset  --schema ./src/prisma/schema.prisma",
+    "migrate:deploy": "npx prisma migrate deploy  --schema ./src/prisma/schema.prisma",
+    "migrate:status": "npx prisma migrate status --schema ./src/prisma/schema.prisma",
+    "migrate:resolve": "npx prisma migrate resolve --schema ./src/prisma/schema.prisma",
+    "prisma:studio": "npx prisma studio --schema ./src/prisma/schema.prisma",
+    "prisma:generate": "npx prisma generate --schema ./src/prisma/schema.prisma",
+    "prisma:generate:watch": "npx prisma generate --watch  --schema ./src/prisma/schema.prisma"
   },
   "dependencies": {
     "@prisma/client": "^3.0.1",
@@ -26,6 +35,7 @@
     "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^7.32.0",
     "nodemon": "^2.0.15",
+    "prisma": "^3.5.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
