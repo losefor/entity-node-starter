@@ -19,7 +19,7 @@ rules:
     - unix
   quotes:
     - error
-    - double
+    - single
   semi:
     - error
     - always
