@@ -2,7 +2,7 @@ import express from "express";
 import compression from "compression";
 import helmet from "helmet";
 import morgan from "morgan";
-
+import passport from 'passport'
 // Initialize the express app
 const app = express();
 
@@ -19,8 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 // Logging
 app.use(morgan("dev"));
 
+// Authentication
+app.use(passport.initialize());
+
 //  TODO : Manage the routers
 //  TODO : Manage the error handling
-//  TODO : Manage authentication
 
 export default app;
