@@ -20,10 +20,7 @@ passport.use(
       try {
         password = await bcrypt.hash(password, 12);
         const user = await userService.create({
-          data: {
-            username,
-            password,
-          },
+          data: { username, password },
         });
         return done(null, user);
       } catch (err) {
@@ -61,7 +58,8 @@ passport.use(
           throw new BadRequestException('The provided password is invalid');
         }
 
-        return done(null, user);
+        const [reshapedUser] = userService.reshape([user]);
+        return done(null, reshapedUser);
       } catch (err) {
         return done(err);
       }
