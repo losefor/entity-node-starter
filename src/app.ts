@@ -25,8 +25,11 @@ app.use(morgan('dev'));
 app.use(passport.initialize());
 import './auth/strategies/jwt.strategy';
 import './auth/strategies/local.strategy';
+import { errorHandler } from './utils/errorHandler';
 
 app.use('/api', router);
-//  TODO : Manage the error handling
+
+// Error handler
+app.use(errorHandler);
 
 export { app };
