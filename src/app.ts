@@ -1,9 +1,10 @@
+import express from 'express';
 import compression from 'compression';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import passport from 'passport';
 import router from './routers';
-import express from 'express';
+import { errorHandler } from './utils/errorHandler';
 
 // Init the app
 const app = express();
@@ -25,7 +26,6 @@ app.use(morgan('dev'));
 app.use(passport.initialize());
 import './auth/strategies/jwt.strategy';
 import './auth/strategies/local.strategy';
-import { errorHandler } from './utils/errorHandler';
 
 app.use('/api', router);
 
