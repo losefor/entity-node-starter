@@ -10,4 +10,10 @@ router.post(
   (req, res) => res.json(req.user)
 );
 
+
+router.post(
+  '/signup',
+  passport.authenticate('signup', { session: false }),
+  (req, res) => res.json(req.user)
+);
 export { router as authRouter };

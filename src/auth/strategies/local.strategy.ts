@@ -2,6 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import * as userService from '../../users/users.service';
 import bcrypt from 'bcryptjs';
+import { BadRequestException } from '../../utils/errorHandler/commonError';
 
 const isValidPassword = async (password: string, hashedPassword: string) => {
   return await bcrypt.compare(password, hashedPassword);
@@ -17,6 +18,7 @@ passport.use(
     },
     async (req, username, password, done) => {
       try {
+        password = await bcrypt.hash(password, 12);
         const user = await userService.create({
           data: {
             username,
@@ -25,7 +27,7 @@ passport.use(
         });
         return done(null, user);
       } catch (err) {
-        return done('FAIL', null);
+        return done(err, null);
       }
     }
   )
@@ -49,13 +51,14 @@ passport.use(
 
         // If no user found
         if (!user) {
-          return done('BAD_EMAIL', false);
+          throw new BadRequestException('No user found with this email');
         }
 
         // validate the password
         const validate = await isValidPassword(password, user.password);
+
         if (!validate) {
-          return done('BAD_PASSWORD', false, { message: 'wrong password' });
+          throw new BadRequestException('The provided password is invalid');
         }
 
         return done(null, user);

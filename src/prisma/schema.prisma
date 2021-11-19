@@ -14,5 +14,5 @@ model User {
   id String @id @default(uuid())
 
   username String @unique
-  password String @unique
+  password String
 }
