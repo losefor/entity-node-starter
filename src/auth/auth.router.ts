@@ -1,12 +1,13 @@
-import { Application } from 'express';
+import { Router } from 'express';
 import passport from 'passport';
+import * as authController from './auth.contoller';
 
-export default function (app: Application) {
-  app.post(
-    '/signup',
-    passport.authenticate('login', { session: false }),
-    (req, res) => {
-      res.json(req.user);
-    }
-  );
-}
+const router = Router();
+
+router.post(
+  '/login',
+  passport.authenticate('login', { session: false }),
+  (req, res) => res.json(req.user)
+);
+
+export { router as authRouter };

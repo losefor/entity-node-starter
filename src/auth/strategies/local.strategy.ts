@@ -1,7 +1,7 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import bcrypt from 'bcrypt';
 import * as userService from '../../users/users.service';
+import bcrypt from 'bcrypt';
 
 const isValidPassword = async (password: string, hashedPassword: string) => {
   return await bcrypt.compare(password, hashedPassword);

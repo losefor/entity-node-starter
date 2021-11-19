@@ -1,13 +1,8 @@
 import { Router } from 'express';
+import { authRouter } from './auth/auth.router';
+
 const router = Router();
 
-// define the home page route
-router.get('/', function (req, res) {
-  res.send('Birds home page');
-});
-// define the about route
-router.get('/about', function (req, res) {
-  res.send('About birds');
-});
+router.use('/auth', authRouter);
 
 export default router;

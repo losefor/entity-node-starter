@@ -23,10 +23,10 @@ app.use(morgan('dev'));
 
 // Authentication with passport
 app.use(passport.initialize());
-// import './auth/strategies/jwt.strategy';
-// import './auth/strategies/local.strategy';
+import './auth/strategies/jwt.strategy';
+import './auth/strategies/local.strategy';
 
-app.use('api', router);
+app.use('/api', router);
 //  TODO : Manage the error handling
 
 export { app };
