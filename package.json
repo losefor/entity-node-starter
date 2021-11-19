@@ -4,8 +4,9 @@
   "description": "The ultimate entity node starter",
   "scripts": {
     "lint": "eslint .",
+    "clean": "rimraf dist",
     "start:dev": "nodemon src/server.ts",
-    "start:build": "node dist/server.js",
+    "start:prod": "node dist/server.js",
     "build": "rimraf dist && tsc",
     "migrate:dev": "prisma migrate dev --schema ./src/prisma/schema.prisma",
     "migrate:dev:create": "prisma migrate dev --create-only --schema ./src/prisma/schema.prisma",
