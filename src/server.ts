@@ -4,7 +4,7 @@ import { secrets } from './utils/config';
 import { app } from './app';
 
 // Start listening
-app.listen(secrets.PORT, () => {
+const expressServer = app.listen(secrets.PORT, () => {
   console.log(`💻 App listening on port ${secrets.PORT}`);
 });
 
