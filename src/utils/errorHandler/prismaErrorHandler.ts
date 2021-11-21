@@ -1,13 +1,19 @@
 import { Request, Response } from 'express';
 import { Prisma } from '@prisma/client';
+import { NODE_ENV } from '../config/config';
 
 export const prismaErrorHandler = async (
   req: Request,
   res: Response,
   error: Prisma.PrismaClientKnownRequestError
 ) => {
-  function response(detail: string) {
-    return res.status(400).json({ detail });
+  function response(message: string) {
+    const responseObject = {
+      message,
+      error: NODE_ENV === 'development' ? error : null,
+    };
+
+    return res.status(400).json(responseObject);
   }
 
   switch (error.code) {
