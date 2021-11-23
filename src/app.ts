@@ -26,8 +26,9 @@ app.use(morgan('dev'));
 app.use(passport.initialize());
 import './auth/strategies/jwt.strategy';
 import './auth/strategies/local.strategy';
+import { API_PREFIX } from './utils/config/config';
 
-app.use('/api', router);
+app.use(API_PREFIX, router);
 
 // Error handler
 app.use(errorHandler);
