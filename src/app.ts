@@ -24,8 +24,8 @@ app.use(morgan('dev'));
 
 // Authentication with passport
 app.use(passport.initialize());
-import './auth/strategies/jwt.strategy';
-import './auth/strategies/local.strategy';
+import './apps/auth/strategies/jwt.strategy';
+import './apps/auth/strategies/local.strategy';
 import { API_PREFIX } from './utils/config/config';
 
 app.use(API_PREFIX, router);

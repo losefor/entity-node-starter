@@ -2,7 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import * as userService from '../../users/users.service';
 import bcrypt from 'bcryptjs';
-import { BadRequestException } from '../../utils/errorHandler/commonError';
+import { BadRequestException } from '../../../utils/errorHandler/commonError';
 
 const isValidPassword = async (password: string, hashedPassword: string) => {
   return await bcrypt.compare(password, hashedPassword);

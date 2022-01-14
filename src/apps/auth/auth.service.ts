@@ -1,6 +1,6 @@
 import { User } from '.prisma/client';
 import jwt from 'jsonwebtoken';
-import { SECRET_KEY } from '../utils/config/config';
+import { SECRET_KEY } from '../../utils/config/config';
 
 export const reshape = (user: User) => {
   return {
