@@ -7,8 +7,8 @@
     "clean": "rimraf dist",
     "clean:hard": "rimraf dist && rimraf node_modules",
     "start:dev": "npm run prisma:generate && nodemon src/server.ts",
-    "start:prod": "npm run prisma:generate && node dist/server.js",
-    "build": "rimraf dist && tsc",
+    "start:prod": "npm run prisma:generate && node dist/src/server.js",
+    "build": "rimraf dist && tsc && tspath -f",
     "migrate:dev": "prisma migrate dev --schema ./src/prisma/schema.prisma",
     "migrate:dev:create": "prisma migrate dev --create-only --schema ./src/prisma/schema.prisma",
     "migrate:reset": "prisma migrate reset  --schema ./src/prisma/schema.prisma",
@@ -50,6 +50,8 @@
     "prisma": "^3.5.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.12.0",
+    "tspath": "^1.3.7",
     "typescript": "^4.5.2"
   },
   "keywords": [
@@ -59,5 +61,18 @@
   ],
   "repository": "https://github.com/losefor/enodes",
   "main": "dist/server.js",
-  "license": "MIT"
+  "license": "MIT",
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "node -r tsconfig-paths/register -r ts-node/register ./src/server.ts",
+    "ext": "ts, js"
+  }
 }

@@ -1,6 +1,6 @@
-# Node js Monolithic architecture starter
+# Node js entity node starter
 
-suitable for future scaling as a microservice architecture
+scale your NodeJs back-end as fast  
 
 ### Folder architecture
 
