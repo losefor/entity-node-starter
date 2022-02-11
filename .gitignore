@@ -6,3 +6,7 @@ dist
 
 #log files
 *.log
+
+
+#env files
+*.env
